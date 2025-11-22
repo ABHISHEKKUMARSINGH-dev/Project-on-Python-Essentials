@@ -1,0 +1,33 @@
+Write a function count_distinct_prime_factors(n) that returns how many unique prime factors a number has. 
+
+
+import time
+import sys
+
+def count_distinct_prime_factors(n):
+    start_time = time.time()  # Start timing
+    distinct_primes = set()
+    factor = 2
+    
+    while factor * factor <= n:
+        while n % factor == 0:
+            distinct_primes.add(factor)
+            n //= factor
+        factor += 1
+    
+    if n > 1:
+        distinct_primes.add(n)
+    
+    # Calculate time taken
+    time_taken = time.time() - start_time
+    
+    # Estimate storage used
+    storage_used = sys.getsizeof(distinct_primes)
+    
+    return len(distinct_primes), time_taken, storage_used
+
+# Example usage:
+result, time_taken, storage_used = count_distinct_prime_factors(60)
+print(f"Distinct Prime Factors: {result}")
+print(f"Time Taken: {time_taken} seconds")
+print(f"Storage Used: {storage_used} bytes")

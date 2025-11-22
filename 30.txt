@@ -1,0 +1,71 @@
+Write a function Carmichael Number Check is_carmichael(n) that checks if a composite number n satisfies aⁿ⁻¹ ≡ 1 mod n for all a coprime to n.
+
+import time
+import sys
+import math
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def is_carmichael(n):
+    start_time = time.time()
+    
+    if not isinstance(n, int) or n < 1:
+        time_taken = time.time() - start_time
+        storage_used = sys.getsizeof(n)
+        return False, time_taken, storage_used
+    
+    # 1. Must be composite
+    if is_prime(n):
+        time_taken = time.time() - start_time
+        storage_used = sys.getsizeof(n)
+        return False, time_taken, storage_used
+        
+    # 2. Check the condition a^(n-1) = 1 mod n for all a coprime to n
+    # We only need to test a limited range of bases (2 to n-1)
+    
+    exponent = n - 1
+    
+    for a in range(2, n):
+        if gcd(a, n) == 1:
+            # Check Fermat's Little Theorem generalized for a composite base
+            if pow(a, exponent, n) != 1:
+                time_taken = time.time() - start_time
+                storage_used = sys.getsizeof(n) + sys.getsizeof(a)
+                return False, time_taken, storage_used
+                
+    time_taken = time.time() - start_time
+    storage_used = sys.getsizeof(n)
+    return True, time_taken, storage_used
+
+def run_test(n):
+    result, time_taken, storage_used = is_carmichael(n)
+    is_carmichael_str = "is a Carmichael Number" if result else "is NOT a Carmichael Number"
+    
+    print("-" * 40)
+    print(f"Number: {n}")
+    print(f"Classification: {is_carmichael_str}")
+    print(f"Execution Time: {time_taken:.8f} seconds")
+    print(f"Storage Used: {storage_used} bytes")
+
+run_test(561)
+run_test(1105)
+run_test(17)
+run_test(9)

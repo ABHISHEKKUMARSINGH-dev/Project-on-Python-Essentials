@@ -1,0 +1,33 @@
+Implement pollard_rho(n) for integer factorization using Pollard's rho algorithm.
+
+n = int(input("Enter number to factor: "))
+
+if n % 2 == 0:
+    print("Factor:", 2)
+    exit()
+
+x = 2
+y = 2
+c = 1
+d = 1
+
+while d == 1:
+    x = (x * x + c) % n
+    y = (y * y + c) % n
+    y = (y * y + c) % n
+
+    diff = x - y
+    if diff < 0:
+        diff = -diff
+
+    a = diff
+    b = n
+    while b != 0:
+        a, b = b, a % b
+
+    d = a
+
+if d == n:
+    print("Failure factorizing")
+else:
+    print("Non-trivial factor:", d)

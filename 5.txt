@@ -1,0 +1,66 @@
+To write a function is_abundant(n) that returns True if the sum of proper divisors of n is greater than n.
+
+import math
+import time
+import sys
+
+def is_abundant(n):
+    start_time = time.time()
+    
+    if n <= 0:
+        time_taken = time.time() - start_time
+        storage_used = sys.getsizeof(n)
+        return False, time_taken, storage_used
+        
+    if n == 1:
+        time_taken = time.time() - start_time
+        storage_used = sys.getsizeof(n)
+        return False, time_taken, storage_used
+
+    sum_proper_divisors = 1
+    
+    limit = math.isqrt(n)
+    
+    for i in range(2, limit + 1):
+        if n % i == 0:
+            sum_proper_divisors += i
+            pair = n // i
+            if pair != i:
+                sum_proper_divisors += pair
+                
+            if sum_proper_divisors > n:
+                time_taken = time.time() - start_time
+                storage_used = sys.getsizeof(n) + sys.getsizeof(sum_proper_divisors)
+                return True, time_taken, storage_used
+                
+    time_taken = time.time() - start_time
+    storage_used = sys.getsizeof(n) + sys.getsizeof(sum_proper_divisors)
+    return sum_proper_divisors > n, time_taken, storage_used
+
+def run_test(n):
+    result, time_taken, storage_used = is_abundant(n)
+    
+    if result:
+        classification = "Abundant Number"
+    else:
+        # Check if perfect or deficient for better test output
+        s = 1
+        limit = math.isqrt(n)
+        for i in range(2, limit + 1):
+            if n % i == 0:
+                s += i
+                pair = n // i
+                if pair != i:
+                    s += pair
+        classification = "Perfect Number" if s == n else "Deficient Number"
+        
+    print("-" * 40)
+    print(f"Number: {n}")
+    print(f"Classification: {classification}")
+    print(f"Time Taken: {time_taken:.8f} seconds")
+    print(f"Storage Used: {storage_used} bytes")
+
+run_test(12)
+run_test(28)
+run_test(18)
+run_test(15)

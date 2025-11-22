@@ -1,0 +1,67 @@
+Write a function is_deficient(n) that returns True if the sum of proper divisors of n is less than n.
+
+import math
+import time
+import sys
+
+def is_deficient(n):
+    start_time = time.time()
+    
+    if n <= 0:
+        time_taken = time.time() - start_time
+        storage_used = sys.getsizeof(n)
+        return False, time_taken, storage_used
+        
+    if n == 1:
+        time_taken = time.time() - start_time
+        storage_used = sys.getsizeof(n)
+        return True, time_taken, storage_used
+
+    sum_proper_divisors = 1
+    
+    limit = math.isqrt(n)
+    
+    for i in range(2, limit + 1):
+        if n % i == 0:
+            sum_proper_divisors += i
+            pair = n // i
+            if pair != i:
+                sum_proper_divisors += pair
+                
+            if sum_proper_divisors >= n:
+                time_taken = time.time() - start_time
+                storage_used = sys.getsizeof(n) + sys.getsizeof(sum_proper_divisors)
+                return False, time_taken, storage_used
+                
+    time_taken = time.time() - start_time
+    storage_used = sys.getsizeof(n) + sys.getsizeof(sum_proper_divisors)
+    return sum_proper_divisors < n, time_taken, storage_used
+
+# --- Example Usage ---
+
+def run_test(n):
+    result, time_taken, storage_used = is_deficient(n)
+    classification = "deficient" if result else ("perfect" if sum_test(n) == n else "abundant")
+    print("-" * 40)
+    print(f"Number: {n}")
+    print(f"Classification: {classification}")
+    print(f"Time Taken: {time_taken:.8f} seconds")
+    print(f"Storage Used: {storage_used} bytes")
+
+def sum_test(n):
+    # Helper to determine if the number is perfect/abundant for classification text
+    if n <= 1: return 0
+    s = 1
+    limit = math.isqrt(n)
+    for i in range(2, limit + 1):
+        if n % i == 0:
+            s += i
+            pair = n // i
+            if pair != i:
+                s += pair
+    return s
+
+run_test(8)    
+run_test(12)   
+run_test(28)   
+run_test(13)
