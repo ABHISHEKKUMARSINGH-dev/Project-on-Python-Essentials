@@ -1,0 +1,37 @@
+import time
+import tracemalloc
+
+def mean_of_digits(n):
+    # Convert the absolute value of the number to a string to iterate over digits
+    s = str(abs(n))
+    
+    # Handle case where n is 0 or empty string (though abs(n) should prevent empty string)
+    if not s: 
+        return 0
+    
+    total_sum = 0
+    for digit in s:
+        # Convert character digit back to integer and accumulate the sum
+        total_sum += int(digit)
+        
+    # Calculate and return the average
+    return total_sum / len(s)
+
+# --- Performance Profiling ---
+
+number_to_test = 678954321678954321
+ 
+tracemalloc.start()
+start_time = time.perf_counter()
+
+result_val = mean_of_digits(number_to_test)
+
+end_time = time.perf_counter()
+current_mem, peak_mem = tracemalloc.get_traced_memory()
+tracemalloc.stop()
+
+execution_time = end_time - start_time
+
+print(f"The mean of digits in {number_to_test} is: {result_val}")
+print(f"Execution Time: {execution_time:.10f} seconds")
+print(f"Peak Memory Utilization: {peak_mem / 1024:.4f} KB")

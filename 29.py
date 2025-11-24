@@ -1,0 +1,44 @@
+import time
+import sys
+
+def polygonal_number(s, n):
+    start_time = time.time()
+    
+    if not isinstance(s, int) or not isinstance(n, int) or s < 3 or n < 1:
+        time_taken = time.time() - start_time
+        storage_used = sys.getsizeof(s) + sys.getsizeof(n)
+        return 0, time_taken, storage_used
+
+    # P_s,n = ((s-2) * n^2 - (s-4) * n) // 2
+    numerator = ((s - 2) * (n ** 2)) - ((s - 4) * n)
+    result = numerator // 2
+    
+    time_taken = time.time() - start_time
+    storage_used = sys.getsizeof(s) + sys.getsizeof(n) + sys.getsizeof(result)
+    return result, time_taken, storage_used
+
+def run_test(s, n):
+    result, time_taken, storage_used = polygonal_number(s, n)
+    
+    if s == 3:
+        name = "Triangular"
+    elif s == 4:
+        name = "Square"
+    elif s == 5:
+        name = "Pentagonal"
+    elif s == 6:
+        name = "Hexagonal"
+    else:
+        name = f"{s}-gonal"
+        
+    print("-" * 40)
+    print(f"Number of Sides (s): {s} ({name})")
+    print(f"Term (n): {n}")
+    print(f"Result (P_{s},{n}): {result}")
+    print(f"Execution Time: {time_taken:.8f} seconds")
+    print(f"Storage Used: {storage_used} bytes")
+
+run_test(s=3, n=12) 
+run_test(s=5, n=10) 
+run_test(s=4, n=5)  
+run_test(s=6, n=4)

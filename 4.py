@@ -1,0 +1,31 @@
+import time
+import tracemalloc
+
+def digital_root(n):
+    while n >= 10:
+        sum_of_digits = 0
+        temp_n = n
+        while temp_n > 0:
+            sum_of_digits += temp_n % 10
+            temp_n //= 10
+            
+        n = sum_of_digits
+        
+    return n
+
+number_to_test = 9875987598759875
+ 
+tracemalloc.start()
+start_time = time.perf_counter()
+
+result_val = digital_root(number_to_test)
+
+end_time = time.perf_counter()
+current_mem, peak_mem = tracemalloc.get_traced_memory()
+tracemalloc.stop()
+
+execution_time = end_time - start_time
+
+print(f"The digital root of {number_to_test} is: {result_val}")
+print(f"Execution Time: {execution_time:.10f} seconds")
+print(f"Peak Memory Utilization: {peak_mem / 1024:.4f} KB")

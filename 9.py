@@ -1,0 +1,35 @@
+import time
+import sys
+import math
+
+def is_pronic(n):
+    start_time = time.time()
+    
+    if n < 0:
+        is_pronic_bool = False
+    elif n == 0:
+        is_pronic_bool = True
+    else:
+        k = math.isqrt(n)
+        is_pronic_bool = (k * (k + 1) == n)
+
+    time_taken = time.time() - start_time
+    storage_used = sys.getsizeof(n) + sys.getsizeof(is_pronic_bool)
+    return is_pronic_bool, time_taken, storage_used
+
+def run_test(n):
+    result, time_taken, storage_used = is_pronic(n)
+    is_pronic_str = "Pronic Number" if result else "Not a Pronic Number"
+    
+    print("-" * 40)
+    print(f"Number: {n}")
+    print(f"Classification: {is_pronic_str}")
+    print(f"Time Taken: {time_taken:.8f} seconds")
+    print(f"Storage Used: {storage_used} bytes")
+
+run_test(42)
+run_test(110)
+run_test(10)
+run_test(16)
+run_test(0)
+run_test(9920)

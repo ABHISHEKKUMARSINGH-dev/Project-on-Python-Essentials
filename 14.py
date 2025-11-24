@@ -1,0 +1,35 @@
+import time
+import sys
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def twin_primes(limit):
+    start_time = time.time()  # Start timing
+    twin_prime_pairs = []
+    
+    for num in range(2, limit - 1):
+        if is_prime(num) and is_prime(num + 2):
+            twin_prime_pairs.append((num, num + 2))
+    
+    time_taken = time.time() - start_time
+    storage_used = sys.getsizeof(twin_prime_pairs)
+    
+    return twin_prime_pairs, time_taken, storage_used
+
+# Example usage:
+pairs, time_taken, storage_used = twin_primes(100)
+print(f"Twin Prime Pairs: {pairs}")
+print(f"Time Taken: {time_taken} seconds")
+print(f"Storage Used: {storage_used} bytes")

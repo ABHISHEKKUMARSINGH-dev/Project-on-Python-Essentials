@@ -1,0 +1,49 @@
+import time
+import sys
+
+def lucas_sequence(n):
+    start_time = time.time()
+    
+    if not isinstance(n, int) or n < 0:
+        time_taken = time.time() - start_time
+        storage_used = sys.getsizeof(n)
+        return [], time_taken, storage_used
+
+    if n == 0:
+        time_taken = time.time() - start_time
+        storage_used = sys.getsizeof(n)
+        return [], time_taken, storage_used
+
+    l_a = 2
+    l_b = 1
+    series = []
+
+    if n >= 1:
+        series.append(l_a)
+
+    if n >= 2:
+        series.append(l_b)
+
+    for _ in range(2, n):
+        next_term = l_a + l_b
+        series.append(next_term)
+        l_a = l_b
+        l_b = next_term
+
+    time_taken = time.time() - start_time
+    storage_used = sys.getsizeof(n) + sys.getsizeof(series)
+    return series, time_taken, storage_used
+
+def run_test(n):
+    result, time_taken, storage_used = lucas_sequence(n)
+    
+    print("-" * 40)
+    print(f"Number of terms requested: {n}")
+    print(f"Lucas Sequence: {result}")
+    print(f"Execution Time: {time_taken:.8f} seconds")
+    print(f"Storage Used: {storage_used} bytes")
+
+run_test(10)
+run_test(1)
+run_test(0)
+run_test(20)

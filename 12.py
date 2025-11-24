@@ -1,0 +1,27 @@
+import time
+import sys
+def is_prime_power(n):
+    start_time = time.time()  # Start timing
+    if n < 2:
+        return False, 0, 0
+    
+    # Check for each possible base p
+    for p in range(2, n + 1):
+        if n % p == 0:  # p is a factor
+            power = 0
+            while n % p == 0:
+                n //= p
+                power += 1
+            if n == 1 and power >= 1:
+                time_taken = time.time() - start_time
+                storage_used = sys.getsizeof(p) + sys.getsizeof(power)
+                return True, time_taken, storage_used
+    
+    time_taken = time.time() - start_time
+    storage_used = sys.getsizeof(n)
+    return False, time_taken, storage_used
+    
+result, time_taken, storage_used = is_prime_power(8)
+print(f"Is Prime Power: {result}")
+print(f"Time Taken: {time_taken} seconds")
+print(f"Storage Used: {storage_used} bytes")
