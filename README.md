@@ -15,42 +15,42 @@ This project shows algorithmic skills in Python by paying attention to mathemati
 Complete Algorithm Catalog
 | File | Function / Algorithm | Description | Concept |
 | :--- | :--- | :--- | :--- |
-| `1.txt` | `factorial(n)` | Computes n! iteratively. | Combinatorics |
-| `2.txt` | `is_palindrome(n)` | Checks if n reads the same forwards and backwards. | String Manipulation |
-| `3.txt` | `mean_of_digits(n)` | Returns the arithmetic mean of all digits in n. | Statistics |
-| `4.txt` | `digital_root(n)` | Recursively sum the digits until only a single digit remains. | Congruence Formula |
-| `5.txt` | `is_abundant(n)` | Checks if sum of proper divisors > n. | Divisor Sum |
-| `6.txt` | `is_deficient(n)` | Checks if sum of proper divisors < n. | Divisor Sum |
-| `7.txt` | `is_harshad(n)` | Checks if n is divisible by the sum of its digits. | Niven Numbers |
-| `8.txt` | `is_automorphic(n)` | Checks if n^2 ends with the digits of n. | Modular Arithmetic |
-| `9.txt` | `is_pronic(n)` | Returns whether n is the product of consecutive integers k(k+1). | Oblong Numbers |
-| `10.txt` | `prime_factors(n)` | Returns a list of all prime factors using trial division. | Factorization |
-| `11.txt` | `count_distinct_factors` | Counts unique prime factors of n. | Prime Factorization |
-| `12.txt` | `is_prime_power(n)` | Returns whether n = p^k where p is prime and k ≥ 1. | Exponentiation |
-| `13.txt` | `is_mersenne_prime(p)` | Checks whether 2^p - 1 is prime, using bitwise shifts. | Mersenne Primes |
-| `14.txt` | `twin_primes(limit)` | Generates pairs (p, p+2) up to a limit. | Twin Prime Conjecture |
-| `15.txt` | `count_divisors(n)` | Computes the total number of divisors. | Divisor Function |
-| `16.txt` | `aliquot_sum(n)` | Sum of proper divisors (used for Perfect numbers). | Aliquot Sequence |
-| `17.txt` | `are_amicable(a, b)` | Checks if two numbers' aliquot sums equal each other. | Amicable Pairs |
-| `18.txt` | `multiplicative_persistence`| Counts steps to reach a single digit via multiplication. | Persistence |
-| `19.txt` | `is_highly_composite` | Tests if n has more divisors than any smaller positive integer. | HCN |
-| `20.txt` | `modular_exponentiation` | Efficiently calculates (b^e) mod m. | Cryptography |
-| `21.txt` | `mod_inverse(a, m)` | Finds x such that ax = 1 mod m using Extended GCD. | Euclidean Algorithm |
-| `22.txt` | `crt(remainders, moduli)` | Solves system of congruences using Chinese Remainder Theorem. | System of Congruences |
-| `23.txt` | `is_quadratic_residue` | Checks if x^2 = a mod p is solvable via Euler's Criterion. | Quadratic Reciprocity |
-| `24.txt` | `order_mod(a, n)` | Computes the multiplicative order of a modulo n. | Group Theory |
-| `25.txt` | `is_fibonacci_prime(n)` | Checks if a number is both Fibonacci and Prime. | Prime Constants |
-| `26.txt` | `lucas_sequence(n)` | Returns Lucas numbers (like Fib, starts 2, 1). | Recurrence Relations |
-| `27.txt` | `is_perfect_power(n)` | Checks if n = a^b where a > 0, b > 1. | Exponential Equations |
-| `28.txt` | `collatz_length(n)` | Returns steps for n to reach 1 (3n+1 problem). | Unsolved Problems |
-| `29.txt` | `polygonal_number(s, n)` | Calculates the n-th s-gonal number (Triangular, Pentagonal).| Geometric Numbers |
-| `30.txt` | `is_carmichael(n)` | Returns whether composite n satisfies a^(n-1) = 1 mod n. | Pseudoprimes |
-| `31.txt` | `miller_rabin(n)` | Given a large integer, returns probably prime result. | Randomized Algo |
-| `32.txt` | `pollards_rho(n)` | Integer factorization using Floyd's cycle-finding logic. | Sub-exponential |
+| `1.py` | `factorial(n)` | Computes n! iteratively. | Combinatorics |
+| `2.py` | `is_palindrome(n)` | Checks if n reads the same forwards and backwards. | String Manipulation |
+| `3.py` | `mean_of_digits(n)` | Returns the arithmetic mean of all digits in n. | Statistics |
+| `4.py` | `digital_root(n)` | Recursively sum the digits until only a single digit remains. | Congruence Formula |
+| `5.py` | `is_abundant(n)` | Checks if sum of proper divisors > n. | Divisor Sum |
+| `6.py` | `is_deficient(n)` | Checks if sum of proper divisors < n. | Divisor Sum |
+| `7.py` | `is_harshad(n)` | Checks if n is divisible by the sum of its digits. | Niven Numbers |
+| `8.py` | `is_automorphic(n)` | Checks if n^2 ends with the digits of n. | Modular Arithmetic |
+| `9.py` | `is_pronic(n)` | Returns whether n is the product of consecutive integers k(k+1). | Oblong Numbers |
+| `10.py` | `prime_factors(n)` | Returns a list of all prime factors using trial division. | Factorization |
+| `11.py` | `count_distinct_factors` | Counts unique prime factors of n. | Prime Factorization |
+| `12.py` | `is_prime_power(n)` | Returns whether n = p^k where p is prime and k ≥ 1. | Exponentiation |
+| `13.py` | `is_mersenne_prime(p)` | Checks whether 2^p - 1 is prime, using bitwise shifts. | Mersenne Primes |
+| `14.py` | `twin_primes(limit)` | Generates pairs (p, p+2) up to a limit. | Twin Prime Conjecture |
+| `15.py` | `count_divisors(n)` | Computes the total number of divisors. | Divisor Function |
+| `16.py` | `aliquot_sum(n)` | Sum of proper divisors (used for Perfect numbers). | Aliquot Sequence |
+| `17.py` | `are_amicable(a, b)` | Checks if two numbers' aliquot sums equal each other. | Amicable Pairs |
+| `18.py` | `multiplicative_persistence`| Counts steps to reach a single digit via multiplication. | Persistence |
+| `19.py` | `is_highly_composite` | Tests if n has more divisors than any smaller positive integer. | HCN |
+| `20.py` | `modular_exponentiation` | Efficiently calculates (b^e) mod m. | Cryptography |
+| `21.py` | `mod_inverse(a, m)` | Finds x such that ax = 1 mod m using Extended GCD. | Euclidean Algorithm |
+| `22.py` | `crt(remainders, moduli)` | Solves system of congruences using Chinese Remainder Theorem. | System of Congruences |
+| `23.py` | `is_quadratic_residue` | Checks if x^2 = a mod p is solvable via Euler's Criterion. | Quadratic Reciprocity |
+| `24.py` | `order_mod(a, n)` | Computes the multiplicative order of a modulo n. | Group Theory |
+| `25.py` | `is_fibonacci_prime(n)` | Checks if a number is both Fibonacci and Prime. | Prime Constants |
+| `26.py` | `lucas_sequence(n)` | Returns Lucas numbers (like Fib, starts 2, 1). | Recurrence Relations |
+| `27.py` | `is_perfect_power(n)` | Checks if n = a^b where a > 0, b > 1. | Exponential Equations |
+| `28.py` | `collatz_length(n)` | Returns steps for n to reach 1 (3n+1 problem). | Unsolved Problems |
+| `29.py` | `polygonal_number(s, n)` | Calculates the n-th s-gonal number (Triangular, Pentagonal).| Geometric Numbers |
+| `30.py` | `is_carmichael(n)` | Returns whether composite n satisfies a^(n-1) = 1 mod n. | Pseudoprimes |
+| `31.py` | `miller_rabin(n)` | Given a large integer, returns probably prime result. | Randomized Algo |
+| `32.py` | `pollards_rho(n)` | Integer factorization using Floyd's cycle-finding logic. | Sub-exponential |
 
-| `33.txt` | `riemann_zeta(s)` | Approximates Zeta(s) via partial summation. | Numerical Analysis |
+| `33.py` | `riemann_zeta(s)` | Approximates Zeta(s) via partial summation. | Numerical Analysis |
 
-| `34.txt` | `partition_function(n)` | Computes p(n) - the number of ways to write n as a sum using DP. | Dynamic Programming |
+| `34.py` | `partition_function(n)` | Computes p(n) - the number of ways to write n as a sum using DP. | Dynamic Programming |
 
 ---
 
@@ -86,7 +86,7 @@ Bash
 git clone https://github.com/ABHISHEKKUMARSINGH-dev/ProjectonPythonEssentials.git
 Run a particular file: All files are self-contained. Run them directly using Python:
 Bash 
-python 26.txt 
+python 26.py 
 Example Output: 
 Python 3.x
 No packages are required beyond the standard libraries: math, sys, time, random.
